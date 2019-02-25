@@ -1,0 +1,15 @@
+import os
+
+project_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+common_path = os.path.join(project_path, 'common')
+config_path = os.path.join(project_path, 'conf')
+data_path = os.path.join(project_path, 'datas')
+excel_path = os.path.join(data_path, 'test_datas.xlsx')
+conf_path = os.path.join(project_path, 'conf')
+test_conf = os.path.join(conf_path, 'test.conf')
+test2_conf = os.path.join(conf_path, 'test2.conf')
+global_conf = os.path.join(conf_path, 'global.conf')
+logs_path = os.path.join(project_path, 'logs')
+testcases_path = os.path.join(project_path, 'testcases')
+reports_path = os.path.join(project_path, 'reports')
+reports_html = os.path.join(reports_path, 'reports.html')
