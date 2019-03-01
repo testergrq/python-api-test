@@ -20,11 +20,9 @@ class RegisterTest(unittest.TestCase):
         cls.request = Request()
 
     def setUp(self):
-        pass
-
-    mysql = MysqlUtil()
-    sql = 'select max(mobilephone) from future.member'
-    max = mysql.fetch_one(sql)[0]
+        self.mysql = MysqlUtil()
+        sql = 'select max(mobilephone) from future.member'
+        self.max = self.mysql.fetch_one(sql)[0]
     # logger.info(type(max), max)
 
     # @unittest.skip('不要执行')
@@ -34,6 +32,8 @@ class RegisterTest(unittest.TestCase):
         data_dict = json.loads(case.data)
         if data_dict['mobilephone'] == '${phone}':
             data_dict['mobilephone'] = int(self.max) + 1
+        if data_dict['mobilephone'] == '${phone2}':
+            data_dict['mobilephone'] = int(self.max) + 2
         resp = self.request.request(case.method, case.url, data_dict)
         try:
             self.assertEqual(case.expected, resp.text)

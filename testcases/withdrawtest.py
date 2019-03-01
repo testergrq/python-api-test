@@ -21,19 +21,13 @@ class WithdrawTest(unittest.TestCase):
 
     def setUp(self):
         pass
-
-    mysql = MysqlUtil()
-    sql = 'select max(mobilephone) from future.member'
-    max = mysql.fetch_one(sql)[0]
     # logger.info(type(max), max)
 
     @data(*withdraw_cases)
     def test_withdraw(self, case):
         logger.info('开始执行第{0}条用例'.format(case.id))
-        data_dict = json.loads(case.data)
-        if data_dict['mobilephone'] == '${phone}':
-            data_dict['mobilephone'] = int(self.max) + 1
-        resp = self.request.request(case.method, case.url, data_dict)
+
+        resp = self.request.request(case.method, case.url, case.data)
         try:
             self.assertEqual(case.expected, resp.json()['code'])
             self.do_excel.write_data('withdraw',case.id + 1, resp.text, 'PASS')
