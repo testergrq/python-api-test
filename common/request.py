@@ -8,10 +8,10 @@ logger = logger.get_logger('request')
 
 class Request:
     def __init__(self):
-        self.session = requests.sessions.session()
+        self.session = requests.sessions.session()# 实例化一个session对象 具体说明看源码
 
     def request(self, method, url, data=None):
-        method = method.upper()
+        method = method.upper()# 将字符串全部转成大写
         config = ReadConfig()
         value = config.get('api', 'pre_url')
         url = value + url

@@ -21,13 +21,13 @@ class DoExcel:
         try:
             self.file_name = file_name  # 操作的文件
             self.workbook = load_workbook(filename=file_name)  # 实例化一个对象
-        except FileNotFoundError as e:
+        except FileNotFoundError as e:# 文件未找到异常处理
             print('{0} not found,please check file path'.format(file_name))
             raise e
 
     def read_data(self, sheet_name):
-        self.sheet_name = sheet_name
-        sheet = self.workbook[sheet_name]  # 获取表单名
+        self.sheet_name = sheet_name  #获取表单名
+        sheet = self.workbook[sheet_name]  # 定位表单
         max_row = sheet.max_row  # 获取sheet最大行数
         print(max_row)
         cases = []  # 定义一个列表，用来存放即将要放进去的测试用例

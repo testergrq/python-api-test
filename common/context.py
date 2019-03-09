@@ -19,6 +19,7 @@ class Context:
     # member_id3 = config.get('data', 'member_id3')
     # loan_id3 = config.get('data', 'loan_id3')
     # id = config.get('data', 'id')
+
 def replace(s):
     # s是目标字符串
     # d是替换的内容
