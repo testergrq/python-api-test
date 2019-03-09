@@ -2,7 +2,7 @@ import unittest
 from common import contants
 from common.request import Request
 from common.do_excel import DoExcel
-from ddt import ddt, data
+from lib.ddt_new import ddt, data
 from common import context
 from common.mysql import MysqlUtil
 from common.context import Context
